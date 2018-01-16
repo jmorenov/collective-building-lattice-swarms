@@ -120,8 +120,8 @@ public class MouseTraps3DWithUI extends GUIState
       display = new Display3D(600,600,this);
               
       // attach the portrayals to the displayer, from bottom to top
-      display.attach(trapsPortrayal,"Traps");
-      display.attach(ballPortrayal, "Balls");
+      //display.attach(trapsPortrayal,"Traps");
+      //display.attach(ballPortrayal, "Balls");
       display.attach(wireFrameP, "Fish tank");
       
       // translate the whole kit and caboodle into the center

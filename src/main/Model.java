@@ -5,13 +5,10 @@ import sim.field.grid.*;
 
 public class Model extends SimState implements Steppable
 {
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
-	public int gridWidth=40;
-	public int gridHeight=20;
-	public int gridLength = 10;
+	public int gridWidth = 30;
+	public int gridHeight = 30;
+	public int gridLength = 30;
 	public IntGrid3D grid = null;
 	
 	public Model(long seed)
@@ -44,7 +41,7 @@ public class Model extends SimState implements Steppable
 	
 	public void step(SimState state)
 	{
-		IntGrid3D tmpGrid = new IntGrid3D(grid);
+		//IntGrid3D tmpGrid = new IntGrid3D(grid);
 		
 		for (int x = 0; x < grid.field.length; x++)
 		{
@@ -52,9 +49,14 @@ public class Model extends SimState implements Steppable
 			{
 				for (int z = 0; z < grid.field[x][y].length; z++)
 				{
-					tmpGrid.field[x][y][z] = random.nextInt(2);
+					if (grid.field[x][y][z] == 0)
+						grid.field[x][y][z] = 1;
+					else
+						grid.field[x][y][z] = 0;
 				}
 			}
 		}
+		
+		//grid = new IntGrid3D(tmpGrid);
 	}
 }
