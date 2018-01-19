@@ -3,13 +3,16 @@ package main;
 import sim.engine.*;
 import sim.field.grid.*;
 
-public class Model extends SimState implements Steppable
+public class Model extends SimState
 {
 	private static final long serialVersionUID = 1L;
 	public int gridWidth = 30;
 	public int gridHeight = 30;
 	public int gridLength = 30;
+	public int numberOfAgents = 3;
+	
 	public IntGrid3D grid = null;
+	private final AgentConstructor[] agents = new AgentConstructor[3];
 	
 	public Model(long seed)
 	{
@@ -22,7 +25,7 @@ public class Model extends SimState implements Steppable
 		
 		grid = new IntGrid3D(gridWidth, gridHeight, gridLength);
 		seedGrid();
-		schedule.scheduleRepeating(this);
+		createAgents();
 	}
 	
 	private void seedGrid()
@@ -33,30 +36,33 @@ public class Model extends SimState implements Steppable
 			{
 				for (int z = 0; z < grid.field[x][y].length; z++)
 				{
-					grid.field[x][y][z] = random.nextInt(2);
+					grid.field[x][y][z] = 0;
 				}
 			}
 		}
 	}
 	
-	public void step(SimState state)
+	private void createAgents()
 	{
-		//IntGrid3D tmpGrid = new IntGrid3D(grid);
-		
-		for (int x = 0; x < grid.field.length; x++)
+		for (int i = 0; i < numberOfAgents; i++)
 		{
-			for (int y = 0; y < grid.field[x].length; y++)
+			agents[i] = new AgentConstructor("" + i);
+			schedule.scheduleRepeating(agents[i]);
+		}
+	}
+	
+	public boolean isAnotherAgentInThisPosition(int posX, int posY, int posZ)
+	{
+		for (int i = 0; i < numberOfAgents; i++)
+		{
+			if (posX == agents[i].getPosX() 
+					&& posY == agents[i].getPosY()
+					&& posZ == agents[i].getPosZ())
 			{
-				for (int z = 0; z < grid.field[x][y].length; z++)
-				{
-					if (grid.field[x][y][z] == 0)
-						grid.field[x][y][z] = 1;
-					else
-						grid.field[x][y][z] = 0;
-				}
+				return true;
 			}
 		}
 		
-		//grid = new IntGrid3D(tmpGrid);
+		return false;
 	}
 }

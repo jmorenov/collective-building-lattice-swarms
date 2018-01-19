@@ -2,7 +2,6 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="lib/gluegen-rt-natives-macosx-universal.jar"/>
 	<classpathentry kind="lib" path="lib/gluegen-rt.jar"/>
 	<classpathentry kind="lib" path="lib/j3dcore.jar"/>
 	<classpathentry kind="lib" path="lib/j3dutils.jar"/>
@@ -12,5 +11,6 @@
 	<classpathentry kind="lib" path="lib/vecmath.jar"/>
 	<classpathentry kind="lib" path="lib/joal-natives-linux-amd64.jar"/>
 	<classpathentry kind="lib" path="lib/jocl-natives-linux-amd64.jar"/>
+	<classpathentry kind="lib" path="lib/gluegen-rt-natives-linux-amd64.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

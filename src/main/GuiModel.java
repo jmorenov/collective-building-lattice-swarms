@@ -4,8 +4,6 @@ import sim.engine.*;
 import sim.display.*;
 import sim.display3d.Display3D;
 import sim.portrayal3d.grid.ValueGridPortrayal3D;
-import sim.portrayal3d.grid.quad.TilePortrayal;
-import sim.portrayal3d.simple.WireFrameBoxPortrayal3D;
 import sim.util.gui.SimpleColorMap;
 
 import java.awt.*;
@@ -78,7 +76,7 @@ public class GuiModel extends GUIState
 		// Make the Display3D. We’ll have it display stuff later.
 		display = new Display3D(50, 50, this);
 	
-		Model model = (Model) state;
+		//Model model = (Model) state;
 		//wireFrameP = new WireFrameBoxPortrayal3D(0, 0, 0, model.gridWidth, model.gridHeight, model.gridLength);
 		
 		// attach the portrayals
