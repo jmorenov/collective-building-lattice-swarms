@@ -2,17 +2,19 @@ package main;
 
 import sim.engine.*;
 import sim.field.grid.*;
+import strategies.Strategy;
 
 public class Model extends SimState
 {
 	private static final long serialVersionUID = 1L;
-	public int gridWidth = 30;
-	public int gridHeight = 30;
-	public int gridLength = 30;
-	public int numberOfAgents = 3;
+	public int gridWidth = Configuration.gridWidth;
+	public int gridHeight = Configuration.gridHeight;
+	public int gridLength = Configuration.gridLength;
+	public int numberOfAgents = Configuration.numberOfAgents;
+	public Strategy strategy = Configuration.strategy;
 	
 	public IntGrid3D grid = null;
-	private final AgentConstructor[] agents = new AgentConstructor[3];
+	private AgentConstructor[] agents;
 	
 	public Model(long seed)
 	{
@@ -23,27 +25,15 @@ public class Model extends SimState
 	{
 		super.start();
 		
-		grid = new IntGrid3D(gridWidth, gridHeight, gridLength);
-		seedGrid();
+		grid = new IntGrid3D(gridWidth, gridHeight, gridLength); 
+		//seedGrid();
 		createAgents();
-	}
-	
-	private void seedGrid()
-	{
-		for (int x = 0; x < grid.field.length; x++)
-		{
-			for (int y = 0; y < grid.field[x].length; y++)
-			{
-				for (int z = 0; z < grid.field[x][y].length; z++)
-				{
-					grid.field[x][y][z] = 0;
-				}
-			}
-		}
 	}
 	
 	private void createAgents()
 	{
+		agents = new AgentConstructor[numberOfAgents];
+		
 		for (int i = 0; i < numberOfAgents; i++)
 		{
 			agents[i] = new AgentConstructor("" + i);

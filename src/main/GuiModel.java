@@ -28,12 +28,9 @@ public class GuiModel extends GUIState
 	
 	public void setupPortrayals()
 	{
-		// tell the portrayals what to portray and how
-		// to portray them
+		SimpleColorMap map = new SimpleColorMap(new Color[] { new Color(0, 0, 0, 0), Color.blue });
+		
 		gridPortrayal.setField(((Model)state).grid);
-		//gridPortrayal.setMap(new sim.util.gui.SimpleColorMap();
-		SimpleColorMap map = new SimpleColorMap();
-		map.setLevels(0.0,1.0,Color.blue,Color.gray);
 		gridPortrayal.setMap(map);
 	}
 	
@@ -53,7 +50,6 @@ public class GuiModel extends GUIState
 	public void load(SimState state)
 	{
 		super.load(state);
-		// we now have a new grid. Set up the portrayals to reflect this
 		setup();
 	}
 	
@@ -73,23 +69,14 @@ public class GuiModel extends GUIState
 	public void init(Controller c)
 	{
 		super.init(c);
-		// Make the Display3D. We’ll have it display stuff later.
-		display = new Display3D(50, 50, this);
-	
-		//Model model = (Model) state;
-		//wireFrameP = new WireFrameBoxPortrayal3D(0, 0, 0, model.gridWidth, model.gridHeight, model.gridLength);
 		
-		// attach the portrayals
+		display = new Display3D(300, 300, this);
+		
 		display.attach(gridPortrayal, "Life");
-		//display.attach(wireFrameP, "Fish tank");
-		
-		// translate the whole kit and caboodle into the center
-	    //display.translate(-model.gridWidth/2, -model.gridHeight/2, -model.gridLength/2);
-	    // scale it down to some reasonable value, say, the maximal dimension of the boxes
-	    //display.scale(1/Math.max(model.gridHeight, Math.max(model.gridWidth, model.gridLength)));
 		
 		displayFrame = display.createFrame();
-	    c.registerFrame(displayFrame);
+	    
+		c.registerFrame(displayFrame);
 	    displayFrame.setVisible(true);
 	}
 	

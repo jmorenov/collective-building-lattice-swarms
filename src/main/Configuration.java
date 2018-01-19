@@ -1,5 +1,8 @@
 package main;
 
+import strategies.*;
+import strategies.Strategy;
+
 public class Configuration 
 {	
 	/**
@@ -9,19 +12,5 @@ public class Configuration
 	public static int gridHeight = 30;
 	public static int gridLength = 30;
 	public static int numberOfAgents = 3;
-	
-	/**
-	 * Configuration class. Don't touch!
-	 */
-	private static Configuration instance = null;
-	protected Configuration() {}
-	   
-	public static Configuration getInstance() 
-	{
-		if(instance == null) {
-			instance = new Configuration();
-		}
-		
-		return instance;   
-	}
+	public static Strategy strategy = new RandomStrategy();
 }

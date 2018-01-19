@@ -42,7 +42,6 @@ public class AgentConstructor implements Steppable
 		int newPosX, newPosY, newPosZ;
 		do
 		{
-			// 1) Movimiento aleatorio, 
 			newPosX = model.random.nextInt(model.gridWidth);
 			newPosY = model.random.nextInt(model.gridHeight);
 			newPosZ = model.random.nextInt(model.gridLength);
@@ -54,8 +53,7 @@ public class AgentConstructor implements Steppable
 		
 		System.out.println("Agent " + name + " new position: " + posX + " " + posY + " " + posZ);
 		
-		// 2) Si nueva posición encaja con posición en las reglas, poner bloque
-		// Colocar siempre, por ahora
-		model.grid.field[posX][posY][posZ] = 1;
+		if (model.strategy.checkPosition(model.grid, posX, posY, posZ))
+			model.grid.field[posX][posY][posZ] = 1;
 	}
 }
