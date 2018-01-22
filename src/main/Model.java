@@ -26,7 +26,7 @@ public class Model extends SimState
 		super.start();
 		
 		grid = new IntGrid3D(gridWidth, gridHeight, gridLength); 
-		//seedGrid();
+		
 		createAgents();
 	}
 	

@@ -12,5 +12,5 @@ public class Configuration
 	public static int gridHeight = 30;
 	public static int gridLength = 30;
 	public static int numberOfAgents = 3;
-	public static Strategy strategy = new RandomStrategy();
+	public static Strategy strategy = new PyramidStrategy();
 }
